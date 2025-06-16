@@ -10,11 +10,6 @@ public class Board {
         length = size;
         width = size;
 
-        field = new ArrayList<>();
-        for(int i = 0; i < length; i++) {
-            field.add(new ArrayList<Plot>());
-            for(int j = 0; j < width; j++) field.get(i).add(new Plot());
-        }
     }
 
     public Board(int length, int width) {
@@ -22,15 +17,16 @@ public class Board {
         this.length = length;
         this.width = width;
 
+    }
+
+    public void randomBoard(int count) {
+
         field = new ArrayList<>();
         for(int i = 0; i < length; i++) {
             field.add(new ArrayList<Plot>());
             for(int j = 0; j < width; j++) field.get(i).add(new Plot());
         }
 
-    }
-
-    public void randomBoard(int count) {
         if(count <= 0) throw new NumberFormatException();
         while(count > 0) {
             Plot target = field.get(randInt(length-1)).get(randInt(width-1));
