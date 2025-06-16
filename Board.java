@@ -79,7 +79,7 @@ public class Board {
             for(int j = 0; j < width; j++) {
                 if(j == 0) {
                     if((length - i) >= 10) result += String.format("%d  |", (length - i));
-                    else result += String.format("0%d  |", (length - i));
+                    else result += String.format("%d   |", (length - i));
                 }
 
                 result += " " + field.get(i).get(j) + " |";

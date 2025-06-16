@@ -6,8 +6,8 @@ public class MinesweeperCLI {
         // ",\s*|\s+"
         try {
 
-            Board b = new Board(12, 30);
-            b.randomBoard(99);
+            Board b = new Board(10, 10);
+            b.randomBoard(10);
             System.out.println(b);
             
         } catch (NumberFormatException n) {
