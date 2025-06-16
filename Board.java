@@ -6,14 +6,14 @@ public class Board {
     ArrayList<ArrayList<Plot>> field;
 
     public Board(int size) {
-        if(size <= 0) throw new NumberFormatException();
+        if(size <= 0 || size >= 100) throw new NumberFormatException();
         length = size;
         width = size;
 
     }
 
     public Board(int length, int width) {
-        if(length <= 0 || width <= 0) throw new NumberFormatException();
+        if(length <= 0 || width <= 0 || length  >= 100 || width  >= 100) throw new NumberFormatException();
         this.length = length;
         this.width = width;
 
@@ -27,7 +27,7 @@ public class Board {
             for(int j = 0; j < width; j++) field.get(i).add(new Plot());
         }
 
-        if(count <= 0) throw new NumberFormatException();
+        if(count <= 0  || count > 0.99*length*width) throw new NumberFormatException();
         while(count > 0) {
             Plot target = field.get(randInt(length-1)).get(randInt(width-1));
             switch(target.value){
@@ -77,13 +77,25 @@ public class Board {
         String result = "";
         for(int i = 0; i < length; i++) {
             for(int j = 0; j < width; j++) {
-                if(j == 0) result += String.format("%d   |", (length - i));
-                result += field.get(i).get(j) + "|";
+                if(j == 0) {
+                    if((length - i) >= 10) result += String.format("%d  |", (length - i));
+                    else result += String.format("0%d  |", (length - i));
+                }
+
+                result += " " + field.get(i).get(j) + " |";
             }
             result += "\n";
+            if(i != length - 1){
+                result += "    ";
+                for(int j = 0; j < (width * 4 + 1); j++) result += "-";
+                result += "\n";
+            }
         }
-        result += "\n    ";
-        for(int i = 1; i <= width; i++) result += " " + i;
+        result += "\n     ";
+        for(int i = 1; i <= width; i++) {
+            if (i >= 10) result += " " + i + " ";
+            else result += " " + i + "  ";
+        }
 
         return result;
     }

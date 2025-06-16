@@ -16,9 +16,9 @@ public class Plot {
                 switch(value){
                     case 0: return " ";
                     case 9: return "☠";
-                    default: return Integer.toString(value);
+                    default: return "" + value;
                 }
-            default: return Integer.toString(value);
+            default: return "" + value;
         }
 }
 }

@@ -4,10 +4,15 @@ public class MinesweeperCLI {
     public static void main(String[] args) {
 
         // ",\s*|\s+"
+        try {
 
-        Board b = new Board(9);
-        b.randomBoard(10);
-        System.out.println(b);
+            Board b = new Board(12, 30);
+            b.randomBoard(99);
+            System.out.println(b);
+            
+        } catch (NumberFormatException n) {
+            System.out.println("Error! Board parameters provided are not valid.");
+        }
     }
     
     static void showCommands(Scanner sys_in) {
